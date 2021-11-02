@@ -1,4 +1,5 @@
 Erp::Electrical::Engine.routes.draw do
+    root to: 'frontend/home#index'
     scope '(:locale)', locale: /en|vi/ do
         namespace :backend, module: 'backend', path: 'backend' do
             resources :services do

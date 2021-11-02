@@ -1,0 +1,11 @@
+{
+  "name": "Điện Nước Trần Chí - Thợ Sửa Chữa Điện Nước Tại Biên Hòa",
+  "short_name": "Điện Nước Trần Chí",
+  "icons": [
+    { "src": "/img/favicon/android-icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/img/favicon/android-icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#efefef",
+  "background_color": "#efefef",
+  "display": "standalone"
+}
