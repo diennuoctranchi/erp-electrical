@@ -1,0 +1,16 @@
+<% content_for :title do %><%= @service.get_name %><% end %>
+<% content_for :page_title do %>    
+    <a href="<%= erp_electrical.backend_services_path %>"><i class="fa fa-rss"></i> <%= t('.services') %></a> / 
+    <%= t('.edit') %>: <%= @service.get_name %>
+<% end %>
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {text: t('.create'), href: erp_electrical.new_backend_service_path, class: 'btn-noborder'}) %>
+<% end %>
+<div class="row">
+    <div class="col-md-12">
+        <% if @service.errors.any? %>
+            <%= erp_form_control("form_error_message") %>
+        <% end %>
+        <%= render 'form', service: @service %>
+    </div>
+</div>

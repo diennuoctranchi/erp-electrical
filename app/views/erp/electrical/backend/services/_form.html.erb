@@ -1,0 +1,130 @@
+<%= form_for([erp_electrical, :backend, service], html: {multipart: true}) do |f| %>
+    <div class="row">
+        <div class="col-md-12">
+            <%= erp_form_control('image', {
+                img_src: service.image.system,
+                name: 'service[image]',
+                width: 150,
+                height: 150,
+                select: t('.image_select'),
+                update: t('.image_update')
+            }) %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <%= erp_form_control("text", {
+                                name: 'service[title]',
+                                value: service.get_title,                   
+                                label: t('.title'),
+                                placeholder: t('.placeholder_title'),
+                                required: true,
+                                errors: service.errors.full_messages_for(:title)
+                            }) %>
+                        </div>                       
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <%= erp_form_control("text", {
+                                name: 'service[name]',
+                                value: service.get_name,                   
+                                label: t('.name'),
+                                placeholder: t('.placeholder_name'),
+                                required: true,
+                                errors: service.errors.full_messages_for(:name)
+                            }) %>
+                        </div>
+                        <div class="col-md-6">
+                            <%= erp_form_control("dataselect", {
+                                name: 'service[service_category_id]',
+                                value: service.service_category_id,
+                                text: service.get_service_category_full_name,
+                                placeholder: t('.choose_service_category'),
+                                label: t('.service_category'),
+                                url: erp_electrical.dataselect_backend_service_categories_path(format: 'json'),
+                                required: true,
+                                errors: service.errors.full_messages_for(:service_category_id)
+                            }) %>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <%= erp_form_control("textarea", {
+                                name: 'service[short_description]',
+                                value: service.short_description,                   
+                                label: t('.short_description'),
+                                placeholder: t('.placeholder_short_description')
+                            }) %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <%= erp_form_control("textarea", {
+                                name: 'service[meta_keywords]',
+                                value: service.meta_keywords,                   
+                                label: t('.meta_keywords'),
+                                placeholder: t('.placeholder_meta_keywords')
+                            }) %>
+                        </div>
+                        <div class="col-md-6">
+                            <%= erp_form_control("textarea", {
+                                name: 'service[meta_description]',
+                                value: service.meta_description,                   
+                                label: t('.meta_description'),
+                                placeholder: t('.placeholder_meta_description')
+                            }) %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <%= erp_form_control('checkbox', {
+                                name: 'service[is_best_choice]',
+                                id: 'service_is_best_choice',
+                                value: service.is_best_choice,
+                                not_selected_value: 'false',
+                                label: t('.service_is_best_choice'),
+                                options: [{value: 'true', text: t('.is_best_choice')}]
+                            }) %>
+                        </div>
+                        <div class="col-md-6">
+                            <%= erp_form_control("text", {
+                                name: 'service[tags]',
+                                value: service.tags,                   
+                                label: t('.tags'),
+                                placeholder: t('.placeholder_tags')
+                            }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-body">
+                    <%= erp_form_control("editor", {
+                        name: 'service[content]',
+                        value: service.content,
+                        label: t('.content')
+                    }) %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-body">
+                    <%= erp_form_control("editor", {
+                        name: 'service[quotation]',
+                        value: service.quotation,
+                        label: t('.quotation')
+                    }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%= erp_component('button/save', { text: t('.submit') }) %>
+    <%= erp_component('button/cancel', { text: t('.cancel'), href: erp_electrical.backend_services_path }) %>
+<% end %>

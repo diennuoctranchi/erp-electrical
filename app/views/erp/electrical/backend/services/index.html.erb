@@ -1,0 +1,24 @@
+<% content_for :title do %>
+    <%= t('.services') %>
+<% end %>
+<% content_for :page_title do %>
+    <i class="fa fa-address-card"></i> <%= t('.services') %>
+<% end %>
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {text: t('.create'), href: erp_electrical.new_backend_service_path, class: 'btn-noborder'}) %>
+<% end %>
+<%= erp_datalist(
+    url: erp_electrical.list_backend_services_path,
+    keywords: [
+        {text: t('.name'), name: 'erp_electrical_services.name'},
+        {text: t('.service_category'), name: 'erp_electrical_service_categories.name', select: {name: 'erp_electrical_service_categories.id', data_url: erp_electrical.dataselect_backend_service_categories_path}}
+    ],
+    columns: [
+        {text: t('image'), name: 'image', value: true, checked: true},
+        {text: t('.name'), name: 'name', value: true, checked: true},
+        {text: t('status'), name: 'status', value: true, checked: true},
+        {text: t('creator'), name: 'creator', value: true, checked: false},
+        {text: t('created_at'), name: 'created_at', value: true, checked: false}
+    ],
+    sort: {sort_by: 'erp_electrical_services.created_at', sort_direction: 'desc'}
+) %>

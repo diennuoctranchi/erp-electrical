@@ -1,0 +1,115 @@
+<table class="table table-advance table-hover table-striped table-checkable order-column">
+    <thead>
+        <tr>
+            <th width='1%'><%= erp_datalist_check_all %></th>
+            <% if get_columns(params).include?("image") %>
+                <th class="text-left" width='15%'><%= t('image') %></th>
+            <% end %>
+            <% if get_columns(params).include?("name") %>
+                <th class="text-left" width='40%'><%= t('.name') %></th>
+            <% end %>
+            <% if get_columns(params).include?("status") %>
+                <th class="text-center"><%= t('status') %></th>
+            <% end %>
+            <% if get_columns(params).include?("creator") %>
+                <th class="text-center"><%= t('creator') %></th>
+            <% end %>
+            <% if get_columns(params).include?("created_at") %>
+                <th class="text-center"><%= t('created_at') %></th>
+            <% end %>
+            <th width="7%" class="sortable text-nowrap text-center" sort-by='erp_electrical_service_categories.custom_order'>
+                <%= t('.custom_order') %>                
+            </th>
+            <th class="text-right" width="7%"><%= t('actions') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @service_categories.each do |service_category| %>
+            <tr class="odd gradeX">
+                <td><%= erp_datalist_check_row(id: service_category.id) %></td>
+                <% if get_columns(params).include?("image") %>
+                    <td class="text-left">
+                        <% if !service_category.image.nil? %>
+                            <img class="image-datalist" src="<%= service_category.image %>" width="150px" height="auto">
+                        <% end %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("name") %>
+                    <td class="text-left">
+                        <%= link_to service_category.get_full_name, erp_electrical.edit_backend_service_category_path(service_category), class: 'title' %>
+                        <% if service_category.alias.present? %><br><strong>Alias: </strong><em><%= service_category.alias %></em><% end %>
+                        <% if service_category.title.present? %><br><em><strong>Tiêu đề trang (<%= service_category.get_title.length %>): </strong><%= service_category.get_title.html_safe %></em><% end %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("status") %>
+                    <td class="text-center">
+                        <span class="label label-sm label-success"><%= t('.success') %></span>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("creator") %>
+                    <td class="text-center">
+                        <% if !service_category.creator.nil? %>
+                            <div class="userpic">
+                                <div class="list-userpic">
+                                    <% if service_category.creator.avatar.present? %><%= image_tag service_category.creator.avatar.system, class: "img-circle",
+                                                                                 alt: service_category.creator.email,
+                                                                                 title: service_category.creator.name + " (" + service_category.creator.email + ")" %>
+                                    <% else %><%= image_tag "/backend/img/placeholder.jpg", class: "img-circle",
+                                                  alt: service_category.creator.email,
+                                                  title: service_category.creator.name + " (" + service_category.creator.email + ")" %>
+                                    <% end %>
+                                </div>
+                                <div class="list-usertitle">
+                                    <div class="list-usertitle-name" title="<%= service_category.creator.name + " (" + service_category.creator.email + ")" %>">
+                                        <%= user_short_name(service_category.creator.name) %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% else %>
+                            <div class="userpic">
+                                <div class="list-userpic"><img class="img-circle" src="/backend/img/placeholder.jpg"></div>
+                                <div class="list-usertitle">
+                                    <div class="list-usertitle-name"><%= t("no_creator") %></div>
+                                </div>
+                            </div>
+                        <% end %>
+                    </td>
+                <% end %>
+                <% if get_columns(params).include?("created_at") %>
+                    <td class="text-center"><%= service_category.created_at.strftime("%d-%m-%Y") %></td>
+                <% end %>
+                <td class="text-center text-semibold">
+                    <%= service_category.custom_order %>
+                    <% if params[:sort_by] == 'erp_electrical_service_categories.custom_order' %>
+                        <a data-method="PUT" 
+                           href="<%= params[:sort_direction] == 'asc' ? erp_electrical.move_up_backend_service_categories_path(id: service_category) : erp_electrical.move_down_backend_service_categories_path(id: service_category) %>"
+                           class="ajax-link">
+                           <i class="fa fa-caret-square-o-up icon-big"></i>
+                        </a>
+                        <a data-method="PUT"
+                           href="<%= params[:sort_direction] == 'asc' ? erp_electrical.move_down_backend_service_categories_path(id: service_category) : erp_electrical.move_up_backend_service_categories_path(id: service_category) %>"
+                           class="ajax-link">
+                           <i class="fa fa-caret-square-o-down icon-big"></i>
+                        </a>
+                    <% end %>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <a class="btn btn-default btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="fa fa-cog"></i><%= t('core.options') %><i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><%= link_to '<i class="fa fa-edit"></i>'.html_safe + t('.edit'), 
+                                    erp_electrical.edit_backend_service_category_path(service_category) %></li>
+                            <li class="divider"></li>
+                            <li><%= link_to '<i class="fa fa-trash"></i>'.html_safe + t('.delete'), 
+                                    erp_electrical.backend_service_category_path(service_category), method: 'DELETE', data: {confirm: t('delete_confirm')}, class: 'ajax-link' %></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<% if @service_categories.empty? %><div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div><% end %>
+<%= erp_datalist_pagination(@service_categories) %>

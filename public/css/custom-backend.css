@@ -1,0 +1,71 @@
+.img-dashboard {
+	width: 100%;
+	height: auto
+}
+
+.note {
+	padding: 15px 15px 15px 15px
+}
+
+.page-content-wrapper .page-content {
+	padding: 25px 20px 25px
+}
+
+.login .content .form-actions {
+	padding: 0 0 15px 0;
+	text-align: center
+}
+.login .content {
+    padding: 10px 30px 0px;
+	margin: 20px auto 10px;
+}
+
+.login .content .form-title {
+    margin-bottom: 20px;
+}
+
+.login .content .form-control {
+    text-align: center;
+}
+
+.page-sidebar .page-sidebar-menu,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu {
+	padding-top: 5px
+}
+
+.page-sidebar .page-sidebar-menu>li>a,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
+	padding: 9px 15px
+}
+
+.page-sidebar .page-sidebar-menu .sub-menu li>a,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li>a {
+	padding: 4px 15px 4px 40px
+}
+
+.page-header.navbar .page-logo .logo-default {
+	height: 35px
+}
+
+.page-sidebar .page-sidebar-menu .sub-menu {
+	padding-bottom: 5px
+}
+
+.txt-color-red {
+	color: #900
+}
+.page-footer .page-footer-inner a {
+    text-decoration: none;
+}
+.table thead tr th {
+	text-transform: capitalize;
+}
+.portlet.light {
+	padding:10px;
+}
+.form-group {
+	margin-bottom: 15px;
+}
+.dropdown-menu .divider {
+	margin: 3px 0;
+}
