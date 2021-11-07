@@ -1,0 +1,18 @@
+<% content_for :title do %>
+    <%= t('.faqs') %>
+<% end %>
+<% content_for :page_title do %>
+    <i class="fa fa-th"></i> <%= t('.faqs') %>
+<% end %>
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {text: t('.create'), href: erp_electrical.new_backend_faq_path, class: 'btn-noborder'}) %>
+<% end %>
+<%= erp_datalist(
+    url: erp_electrical.list_backend_faqs_path,
+    columns: [
+        {text: t('.question'), name: 'question', value: true, checked: true},
+        {text: t('.reply'), name: 'reply', value: true, checked: true},
+        {text: t('created_at'), name: 'created_at', value: true, checked: false}
+    ],
+    sort: {sort_by: 'erp_electrical_faqs.created_at', sort_direction: 'desc'}
+) %>

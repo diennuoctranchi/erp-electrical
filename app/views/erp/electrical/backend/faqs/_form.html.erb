@@ -1,0 +1,36 @@
+<%= form_for([erp_electrical, :backend, faq], html: {multipart: true}) do |f| %>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <%= erp_form_control("textarea", {
+                                name: 'faq[question]',
+                                value: faq.get_question,                   
+                                label: t('.question'),
+                                placeholder: t('.placeholder_question'),
+                                required: true,
+                                errors: faq.errors.full_messages_for(:question)
+                            }) %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <%= erp_form_control("textarea", {
+                                name: 'faq[reply]',
+                                value: faq.get_reply,                   
+                                label: t('.reply'),
+                                placeholder: t('.placeholder_reply'),
+                                required: true,
+                                errors: faq.errors.full_messages_for(:reply)
+                            }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%= erp_component('button/save', { text: t('.submit') }) %>
+    <%= erp_component('button/cancel', { text: t('.cancel'), href: erp_electrical.backend_faqs_path }) %>
+<% end %>

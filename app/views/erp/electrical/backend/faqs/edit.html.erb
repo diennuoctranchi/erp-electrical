@@ -1,0 +1,16 @@
+<% content_for :title do %><%= @faq.get_question.truncate(70) %><% end %>
+<% content_for :page_title do %>    
+    <a href="<%= erp_electrical.backend_faqs_path %>"><i class="fa fa-th"></i> <%= t('.faqs') %></a> / 
+    <%= t('.edit') %>: <%= @faq.get_question.truncate(70) %>
+<% end %>
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {text: t('.create'), href: erp_electrical.new_backend_faq_path, class: 'btn-noborder'}) %>
+<% end %>
+<div class="row">
+    <div class="col-md-12">
+        <% if @faq.errors.any? %>
+            <%= erp_form_control("form_error_message") %>
+        <% end %>
+        <%= render 'form', faq: @faq %>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<% content_for :title do %>
+    <%= t('.diaries') %>
+<% end %>
+<% content_for :page_title do %>
+    <i class="fa fa-th"></i> <%= t('.diaries') %>
+<% end %>
+<% content_for :page_toolbar do %>
+    <%= erp_component('button/create', {text: t('.create'), href: erp_electrical.new_backend_diary_path, class: 'btn-noborder'}) %>
+<% end %>
+<%= erp_datalist(
+    url: erp_electrical.list_backend_diaries_path,
+    columns: [
+        {text: t('image'), name: 'image', value: true, checked: true},
+        {text: t('.name'), name: 'name', value: true, checked: true},
+        {text: t('created_at'), name: 'created_at', value: true, checked: true}
+    ],
+    sort: {sort_by: 'erp_electrical_diaries.created_at', sort_direction: 'desc'}
+) %>

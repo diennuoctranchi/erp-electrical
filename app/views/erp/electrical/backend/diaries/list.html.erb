@@ -2,50 +2,48 @@
     <thead>
         <tr>
             <% if get_columns(params).include?("image") %>
-                <th class="text-left" width='15%'><%= t('image') %></th>
+                <th class="text-left" width='14%'><%= t('image') %></th>
             <% end %>
             <% if get_columns(params).include?("name") %>
-                <th class="text-left" width='40%'><%= t('.name') %></th>
+                <th class="text-center" width='42%'><%= t('.name') %></th>
             <% end %>
             <% if get_columns(params).include?("created_at") %>
                 <th class="text-center"><%= t('created_at') %></th>
             <% end %>
-            <th width="7%" class="sortable text-nowrap text-center" sort-by='erp_electrical_service_categories.custom_order'>
+            <th width="7%" class="sortable text-nowrap text-center" sort-by='erp_electrical_diaries.custom_order'>
                 <%= t('.custom_order') %>                
             </th>
             <th class="text-right" width="7%"><%= t('actions') %></th>
         </tr>
     </thead>
     <tbody>
-        <% @service_categories.each do |service_category| %>
+        <% @diaries.each do |diary| %>
             <tr class="odd gradeX">
                 <% if get_columns(params).include?("image") %>
                     <td class="text-left">
-                        <% if !service_category.image.nil? %>
-                            <img class="image-datalist" src="<%= service_category.image %>" width="150px" height="auto">
+                        <% if !diary.image.nil? %>
+                            <img class="image-datalist" src="<%= diary.image.detail_370x260 %>" width="135px" height="auto">
                         <% end %>
                     </td>
                 <% end %>
                 <% if get_columns(params).include?("name") %>
                     <td class="text-left">
-                        <%= link_to service_category.get_full_name, erp_electrical.edit_backend_service_category_path(service_category), class: 'title' %>
-                        <% if service_category.alias.present? %><br><strong>Alias: </strong><em><%= service_category.alias %></em><% end %>
-                        <% if service_category.title.present? %><br><em><strong>Tiêu đề trang (<%= service_category.get_title.length %>): </strong><%= service_category.get_title.html_safe %></em><% end %>
+                        <%= link_to diary.get_name, erp_electrical.edit_backend_diary_path(diary), class: 'title' %>
                     </td>
                 <% end %>
                 <% if get_columns(params).include?("created_at") %>
-                    <td class="text-center"><%= service_category.created_at.strftime("%d-%m-%Y") %></td>
+                    <td class="text-center"><%= diary.created_at.strftime("%d/%m/%Y") %></td>
                 <% end %>
                 <td class="text-center text-semibold">
-                    <%= service_category.custom_order %>
-                    <% if params[:sort_by] == 'erp_electrical_service_categories.custom_order' %>
+                    <%= diary.custom_order %>
+                    <% if params[:sort_by] == 'erp_electrical_diaries.custom_order' %>
                         <a data-method="PUT" 
-                           href="<%= params[:sort_direction] == 'asc' ? erp_electrical.move_up_backend_service_categories_path(id: service_category) : erp_electrical.move_down_backend_service_categories_path(id: service_category) %>"
+                           href="<%= params[:sort_direction] == 'asc' ? erp_electrical.move_up_backend_diaries_path(id: diary) : erp_electrical.move_down_backend_diaries_path(id: diary) %>"
                            class="ajax-link">
                            <i class="fa fa-caret-square-o-up icon-big"></i>
                         </a>
                         <a data-method="PUT"
-                           href="<%= params[:sort_direction] == 'asc' ? erp_electrical.move_down_backend_service_categories_path(id: service_category) : erp_electrical.move_up_backend_service_categories_path(id: service_category) %>"
+                           href="<%= params[:sort_direction] == 'asc' ? erp_electrical.move_down_backend_diaries_path(id: diary) : erp_electrical.move_up_backend_diaries_path(id: diary) %>"
                            class="ajax-link">
                            <i class="fa fa-caret-square-o-down icon-big"></i>
                         </a>
@@ -58,10 +56,10 @@
                         </a>
                         <ul class="dropdown-menu pull-right">
                             <li><%= link_to '<i class="fa fa-edit"></i>'.html_safe + t('.edit'), 
-                                    erp_electrical.edit_backend_service_category_path(service_category) %></li>
+                                    erp_electrical.edit_backend_diary_path(diary) %></li>
                             <li class="divider"></li>
                             <li><%= link_to '<i class="fa fa-trash"></i>'.html_safe + t('.delete'), 
-                                    erp_electrical.backend_service_category_path(service_category), method: 'DELETE', data: {confirm: t('delete_confirm')}, class: 'ajax-link' %></li>
+                                    erp_electrical.backend_diary_path(diary), method: 'DELETE', data: {confirm: t('delete_confirm')}, class: 'ajax-link' %></li>
                         </ul>
                     </div>
                 </td>
@@ -69,5 +67,5 @@
         <% end %>
     </tbody>
 </table>
-<% if @service_categories.empty? %><div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div><% end %>
-<%= erp_datalist_pagination(@service_categories) %>
+<% if @diaries.empty? %><div class="datalist-empty-line"><%= t('.no_matching_records_found') %></div><% end %>
+<%= erp_datalist_pagination(@diaries) %>

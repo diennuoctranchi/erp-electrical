@@ -3,8 +3,9 @@ class CreateErpElectricalBlogs < ActiveRecord::Migration[5.1]
     create_table :erp_electrical_blogs do |t|
       t.string :image
       t.string :name
-      t.text :content
       t.string :title
+      t.text :content
+      t.string :short_description
       t.string :meta_keywords
       t.string :meta_description
       t.string :tags

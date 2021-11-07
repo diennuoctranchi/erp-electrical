@@ -86,7 +86,7 @@ module Erp
 
           # Only allow a trusted parameter "white list" through.
           def diary_params
-            params.fetch(:diary, {}).permit()
+            params.fetch(:diary, {}).permit(:image, :name)
           end
       end
     end

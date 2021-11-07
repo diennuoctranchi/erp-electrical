@@ -44,6 +44,7 @@
                 <% if get_columns(params).include?("status") %>
                     <td class="text-center">
                         <span class="label label-sm label-success"><%= t('.success') %></span>
+                        <% if service.is_best_choice? %><br/><span class="label label-sm label-warning"><%= t('.is_best_choice') %></span><% end %>
                     </td>
                 <% end %>
                 <% if get_columns(params).include?("creator") %>

@@ -35,6 +35,48 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item <%= "active open" if ['erp/electrical/backend/diaries',
+                                                          'erp/electrical/backend/faqs',
+                                                          'erp/electrical/backend/blogs'].include?(params[:controller]) %>">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-th"></i>
+                        <span class="title"><%= t('.information') %></span>
+                        <% if ['erp/electrical/backend/diaries',
+                               'erp/electrical/backend/faqs',
+                               'erp/electrical/backend/blogs'].include?(params[:controller]) %>
+                            <span class="selected"></span>
+                            <span class="arrow open"></span>
+                        <% else %>
+                            <span class="arrow"></span>
+                        <% end %>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item <%= "active open" if ['erp/electrical/backend/blogs'].include?(params[:controller]) %>">
+                            <a href="<%= erp_electrical.backend_blogs_path %>" class="nav-link ">
+                                <span class="title"><%= t('.blogs') %></span>
+                                <% if ["erp/electrical/backend/blogs"].include?(params[:controller]) %>
+                                    <span class="selected"></span>
+                                <% end %>
+                            </a>
+                        </li>
+                        <li class="nav-item <%= "active open" if ['erp/electrical/backend/diaries'].include?(params[:controller]) %>">
+                            <a href="<%= erp_electrical.backend_diaries_path %>" class="nav-link ">
+                                <span class="title"><%= t('.diaries') %></span>
+                                <% if ["erp/electrical/backend/diaries"].include?(params[:controller]) %>
+                                    <span class="selected"></span>
+                                <% end %>
+                            </a>
+                        </li>
+                        <li class="nav-item <%= "active open" if ['erp/electrical/backend/faqs'].include?(params[:controller]) %>">
+                            <a href="<%= erp_electrical.backend_faqs_path %>" class="nav-link ">
+                                <span class="title"><%= t('.faqs') %></span>
+                                <% if ["erp/electrical/backend/faqs"].include?(params[:controller]) %>
+                                    <span class="selected"></span>
+                                <% end %>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

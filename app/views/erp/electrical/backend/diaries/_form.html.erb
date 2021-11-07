@@ -1,0 +1,36 @@
+<%= form_for([erp_electrical, :backend, diary], html: {multipart: true}) do |f| %>
+    <div class="row">
+        <div class="col-md-12">
+            <%= erp_form_control('image', {
+                img_src: diary.image,
+                name: 'diary[image]',
+                width: 150,
+                height: 150,
+                select: t('.image_select'),
+                update: t('.image_update')
+            }) %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <%= erp_form_control("text", {
+                                name: 'diary[name]',
+                                value: diary.get_name,                   
+                                label: t('.name'),
+                                placeholder: t('.placeholder_name'),
+                                required: true,
+                                errors: diary.errors.full_messages_for(:name)
+                            }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%= erp_component('button/save', { text: t('.submit') }) %>
+    <%= erp_component('button/cancel', { text: t('.cancel'), href: erp_electrical.backend_diaries_path }) %>
+<% end %>

@@ -1,6 +1,6 @@
 module Erp
   module Electrical
-    class ServiceCategoryIconUploader < CarrierWave::Uploader::Base
+    class DiaryImageUploader < CarrierWave::Uploader::Base
       include CarrierWave::MiniMagick
       storage :file
 
@@ -11,9 +11,13 @@ module Erp
       version :system do
         process resize_to_fill: [150, 150]
       end
+      
+      version :detail_370x260 do
+        process resize_to_fill: [370, 260]
+      end
 
-      version :detail_40x40 do
-        process resize_to_fill: [40, 40]
+      version :detail_740x520 do
+        process resize_to_fill: [740, 520]
       end
     end
   end

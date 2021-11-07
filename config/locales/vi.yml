@@ -6,6 +6,10 @@ vi:
           service_manage: 'Điện Nước Trần Chí'
           services: 'Danh Sách Dịch Vụ'
           service_categories: 'Chuyên Mục Dịch Vụ'
+          information: 'Quản Lý Thông Tin'
+          blogs: 'Chia Sẻ Kinh Nghiệm'
+          diaries: 'Nhật Ký Công Việc'
+          faqs: 'Câu Hỏi Thường Gặp'
   erp:
     electrical:
       backend:
@@ -19,6 +23,7 @@ vi:
             name: 'Tên dịch vụ'
             custom_order: 'Sắp xếp vị trí'
             success: 'Đang sử dụng'
+            is_best_choice: 'Được tìm nhiều nhất'
             edit: 'Cập nhật'
             delete: 'Xóa dịch vụ'
             no_matching_records_found: 'Danh Sách Hiện Tại Đang Trống'
@@ -39,7 +44,7 @@ vi:
             image_select: 'Chọn Hình Ảnh'
             image_update: 'Cập Nhật Hình Ảnh'
             title: 'Tiêu Đề Dịch Vụ (SEO)'
-            placeholder_title: 'Nhập tiêu đề cho dịch vụ (<= 70 ký tự)'
+            placeholder_title: 'Nhập tiêu đề cho dịch vụ (<= 80 ký tự)'
             name: 'Tên Dịch Vụ'
             placeholder_name: 'Nhập tên cho dịch vụ'
             service_category: 'Chuyên Mục Dịch Vụ'
@@ -62,7 +67,7 @@ vi:
             service_categories: 'Chuyên Mục Dịch Vụ'
             create: 'Tạo Mới Chuyên Mục'
             name: 'Tên chuyên mục'
-            parent_service_category: Chuyên mục cha
+            parent_service_category: 'Chuyên mục cha'
           list:
             name: 'Tên chuyên mục'
             custom_order: 'Sắp xếp vị trí'
@@ -89,13 +94,119 @@ vi:
             icon_select: 'Chọn Icon Đại Diện'
             icon_update: 'Cập Nhật Icon đại diện'
             title: 'Tiêu Đề Chuyên Mục (SEO)'
-            placeholder_title: 'Nhập tiêu đề cho chuyên mục (<= 70 ký tự)'
+            placeholder_title: 'Nhập tiêu đề cho chuyên mục (<= 80 ký tự)'
             name: 'Tên Chuyên Mục'
             placeholder_name: 'Nhập tên cho chuyên mục'
             parent_service_category: 'Chuyên Mục Cha'
             short_description: 'Mô Tả Ngắn'
             placeholder_short_description: 'Nhập mô tả ngắn'
             choose_parent_service_category: 'Chọn chuyên mục cha'
+            meta_keywords: 'Meta Keywords (SEO)'
+            placeholder_meta_keywords: 'Nhập meta keywords'
+            meta_description: 'Meta Description (SEO)'
+            placeholder_meta_description: 'Nhập meta description'
+            tags: 'Tags'
+            placeholder_tags: 'Nhập tags (Ngăn cách tag bởi dấu phẩy)'
+            content: 'Nội Dung'
+            submit: 'Xác Nhận Lưu'
+            cancel: 'Quay Về Danh Sách'
+        diaries:
+          index:
+            diaries: 'Nhật Ký Công Việc'
+            create: 'Tạo Mới Nhật Ký'
+            name: 'Tiêu đề'
+          list:
+            name: 'Tiêu đề'
+            custom_order: 'Sắp xếp vị trí'
+            edit: 'Cập nhật'
+            delete: 'Xóa nhật ký'
+            no_matching_records_found: 'Danh Sách Hiện Tại Đang Trống'
+          new:
+            diaries: 'Nhật Ký Công Việc'
+            create: 'Tạo Mới Nhật Ký'
+          edit:
+            diaries: 'Nhật Ký Công Việc'
+            create: 'Tạo Mới Nhật Ký'
+            edit: 'Cập Nhật'
+          create:
+            success: 'Tạo mới nhật ký công việc thành công'
+          update:
+            success: 'Cập nhật nhật ký công việc thành công'
+          destroy:
+            success: 'Xóa nhật ký công việc thành công'
+          form:
+            image_select: 'Chọn Hình Ảnh'
+            image_update: 'Cập Nhật Hình Ảnh'
+            name: 'Tên Nhật Ký Công Việc'
+            placeholder_name: 'Nhập tên nhật ký công việc'
+            submit: 'Xác Nhận Lưu'
+            cancel: 'Quay Về Danh Sách'
+        faqs:
+          index:
+            faqs: 'Câu Hỏi Thường Gặp'
+            create: 'Tạo Mới Câu Hỏi'
+            question: 'Câu hỏi'
+            reply: 'Câu trả lời'
+          list:
+            question: 'Câu hỏi'
+            reply: 'Câu trả lời'
+            custom_order: 'Sắp xếp vị trí'
+            edit: 'Cập nhật'
+            delete: 'Xóa câu hỏi'
+            no_matching_records_found: 'Danh Sách Hiện Tại Đang Trống'
+          new:
+            faqs: 'Câu Hỏi Thường Gặp'
+            create: 'Tạo Mới Câu Hỏi'
+          edit:
+            faqs: 'Câu Hỏi Thường Gặp'
+            create: 'Tạo Mới Câu Hỏi'
+            edit: 'Cập Nhật'
+          create:
+            success: 'Tạo mới câu hỏi thường gặp thành công'
+          update:
+            success: 'Cập nhật câu hỏi thường gặp thành công'
+          destroy:
+            success: 'Xóa câu hỏi thường gặp thành công'
+          form:
+            question: 'Câu Hỏi'
+            placeholder_question: 'Nhập nội dung câu hỏi'
+            reply: 'Câu Trả Lời'
+            placeholder_reply: 'Nhập nội dung câu trả lời'
+            submit: 'Xác Nhận Lưu'
+            cancel: 'Quay Về Danh Sách'
+        blogs:
+          index:
+            blogs: 'Chia Sẻ Kinh Nghiệm'
+            create: 'Tạo Mới Bài Chia Sẻ'
+            name: 'Tên bài chia sẻ'
+          list:
+            name: 'Tên bài chia sẻ'
+            custom_order: 'Sắp xếp vị trí'
+            edit: 'Cập nhật'
+            delete: 'Xóa bài chia sẻ'
+            no_matching_records_found: 'Danh Sách Hiện Tại Đang Trống'
+          new:
+            blogs: 'Chia Sẻ Kinh Nghiệm'
+            create: 'Tạo Mới Bài Chia Sẻ'
+          edit:
+            blogs: 'Chia Sẻ Kinh Nghiệm'
+            create: 'Tạo Mới Bài Chia Sẻ'
+            edit: 'Cập Nhật'
+          create:
+            success: 'Tạo mới bài chia sẻ thành công'
+          update:
+            success: 'Cập nhật bài chia sẻ thành công'
+          destroy:
+            success: 'Xóa bài chia sẻ thành công'
+          form:
+            image_select: 'Chọn Hình Ảnh'
+            image_update: 'Cập Nhật Hình Ảnh'
+            title: 'Tiêu Đề Bài Chia Sẻ (SEO)'
+            placeholder_title: 'Nhập tiêu đề cho bài chia sẻ (<= 80 ký tự)'
+            name: 'Tên Bài Chia Sẻ'
+            placeholder_name: 'Nhập tên cho bài chia sẻ'
+            short_description: 'Mô Tả Ngắn'
+            placeholder_short_description: 'Nhập mô tả ngắn'
             meta_keywords: 'Meta Keywords (SEO)'
             placeholder_meta_keywords: 'Nhập meta keywords'
             meta_description: 'Meta Description (SEO)'
@@ -112,12 +223,23 @@ vi:
           attributes:
             title:
               blank: 'không được để trống.'
-              too_long: 'không được dài hơn 70 ký tự.'
+              too_long: 'không được dài hơn 80 ký tự.'
               taken: 'không được trùng lặp.'
             name:
+              blank: 'không được để trống.'
+              taken: 'không được trùng lặp.'
+        erp/electrical/faq:
+          attributes:
+            question:
+              blank: 'không được để trống.'
+              taken: 'không được trùng lặp.'
+            reply:
               blank: 'không được để trống.'
               taken: 'không được trùng lặp.'
     attributes:
       erp/electrical/service_category:
         name: 'Tên chuyên mục'
         title: 'Tiêu đề chuyên mục'
+      erp/electrical/faq:
+        question: 'Câu hỏi'
+        reply: 'Câu trả lời'

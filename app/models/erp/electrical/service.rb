@@ -8,7 +8,7 @@ module Erp::Electrical
     validates :service_category_id, :presence => true
     validates :title, :presence => true
     validates :title, :uniqueness => true
-    validates :title, length: {maximum: 70}
+    validates :title, length: {maximum: 80}
 
     belongs_to :creator, class_name: 'Erp::User'
     belongs_to :service_category, class_name: 'Erp::Electrical::ServiceCategory'

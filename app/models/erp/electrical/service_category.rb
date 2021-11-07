@@ -8,7 +8,7 @@ module Erp::Electrical
     validates :name, :uniqueness => true
     validates :title, :presence => true
     validates :title, :uniqueness => true
-    validates :title, length: {maximum: 70}
+    validates :title, length: {maximum: 80}
 
     belongs_to :creator, class_name: 'Erp::User'
     belongs_to :parent, class_name: 'Erp::Electrical::ServiceCategory', optional: true
@@ -18,16 +18,6 @@ module Erp::Electrical
     def self.filter(query, params)
       params = params.to_unsafe_hash
       and_conds = []
-			
-			if params["filters"].present?
-				params["filters"].each do |ft|
-					or_conds = []
-					ft[1].each do |cond|
-						or_conds << "#{cond[1]["name"]} = '#{cond[1]["value"]}'"
-					end
-					and_conds << '('+or_conds.join(' OR ')+')' if !or_conds.empty?
-				end
-			end
 			
       if params["keywords"].present?
         params["keywords"].each do |kw|
