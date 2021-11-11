@@ -61,7 +61,7 @@ module Erp::Electrical
     end
 
     after_save :update_cache_search
-		after_create :create_alias
+		after_save :create_alias
 		
     def update_cache_search
 			str = []

@@ -21,7 +21,7 @@ module Erp::Electrical
       return query
     end
 
-    after_create :create_alias
+    after_save :create_alias
         
     def create_alias
       name = self.name
