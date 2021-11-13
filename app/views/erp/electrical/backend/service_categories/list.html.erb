@@ -31,6 +31,7 @@
                         <%= link_to service_category.get_full_name, erp_electrical.edit_backend_service_category_path(service_category), class: 'title' %>
                         <% if service_category.alias.present? %><br><strong>Alias: </strong><em><%= service_category.alias %></em><% end %>
                         <% if service_category.title.present? %><br><em><strong>Tiêu đề trang (<%= service_category.get_title.length %>): </strong><%= service_category.get_title.html_safe %></em><% end %>
+                        <% if service_category.meta_description.present? %><br><em><strong>Meta Description (<%= service_category.meta_description.length %>): </strong><%= service_category.meta_description.html_safe %></em><% end %>
                     </td>
                 <% end %>
                 <% if get_columns(params).include?("created_at") %>
