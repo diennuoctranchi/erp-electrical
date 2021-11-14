@@ -30,7 +30,7 @@
                 <% if get_columns(params).include?("image") %>
                     <td class="text-left">
                         <% if !service.image.nil? %>
-                            <img class="image-datalist" src="<%= service.image %>" width="150px" height="auto">
+                            <img class="image-datalist" src="<%= service.image.detail_740x520 %>" width="150px" height="auto">
                         <% end %>
                     </td>
                 <% end %>
@@ -39,6 +39,7 @@
                         <%= link_to service.get_name, erp_electrical.edit_backend_service_path(service), class: 'title' %>
                         <% if service.alias.present? %><br><strong>Alias: </strong><em><%= service.alias %></em><% end %>
                         <% if service.title.present? %><br><em><strong>Tiêu đề trang (<%= service.get_title.length %>): </strong><%= service.get_title.html_safe %></em><% end %>
+                        <% if service.short_description.present? %><br><em><strong>Mô tả ngắn (<%= service.short_description.length %>): </strong><%= service.short_description.html_safe %></em><% end %>
                     </td>
                 <% end %>
                 <% if get_columns(params).include?("status") %>
